@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: finstatement-projector
+    env: python
+    buildCommand: bash build.sh
+    startCommand: gunicorn wsgi:app --bind 0.0.0.0:$PORT --timeout 120 --workers 2
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: PYTHON_VERSION
+        value: 3.11.0
