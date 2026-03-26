@@ -4,6 +4,11 @@ NSVR & Associates LLP
 Developer Version
 """
 
+import os, sys
+# Guarantee that routes/, core/, config.py are always importable
+# regardless of which directory gunicorn/Docker launches from
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 from flask import Flask
 from config import Config
 
